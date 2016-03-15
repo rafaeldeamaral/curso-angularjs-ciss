@@ -1,25 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
 	<title>AngularJS - CISS</title>
 	<meta charset="utf8" />
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/myApp.js"></script>
+	<script type="text/javascript" src="js/controller/formCtrl.js"></script>
 </head>
-<body>
+<body ng-controller="FormCtrl">
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Formulário de cadastro</h1>
+			<h1 ng-bind="'Formulário de cadastro'"></h1>
 			<form id="formulario">
 				<div class="form-group">
 					<label for="name">Nome</label>
-					<input type="text" class="form-control" id="name" placeholder="Nome">
+					<input type="text" class="form-control" id="name" ng-model="pessoa.name">
 				</div>
 				<div class="form-group">
 					<label for="lastname">Sobrenome</label>
-					<input type="text" class="form-control" id="lastname" placeholder="Sobrenome">
+					<input type="text" class="form-control" id="lastname" ng-model="pessoa.lastname">
+				</div>
+				<div class="form-group">
+					<label for="age">Idade</label>
+					<input type="number" class="form-control" id="age" ng-model="pessoa.age">
+				</div>
+				<div class="form-group">
+					<label for="lastname">E-mail</label>
+					<input type="email" class="form-control" id="email" ng-model="pessoa.email">
+				</div>
+				<div class="form-group">
+					<label for="phone">Telefone</label>
+					<input type="number" class="form-control" id="phone" ng-model="pessoa.phone">
 				</div>
 			  <input type="submit" class="btn btn-default" value="Cadastrar">
 			</form>
+
+			<p>Nome <strong ng-bind="pessoa.name || 'Nome não informado'"></strong> </p>
+			<p ng-if="pessoa.lastname">Sobrenome <strong ng-bind="pessoa.lastname"></strong> </p>
+			<p ng-if="pessoa.email">Idade <strong ng-bind="pessoa.email"></strong> </p>
+			<p ng-if="pessoa.age">E-mail <strong ng-bind="pessoa.age"></strong> </p>
+			<p ng-if="pessoa.phone">Telefone <strong ng-bind="pessoa.phone"></strong></p>
+
+			<p>{{ pessoa }}</p>
 		</div>
 	</div>
 </body>
